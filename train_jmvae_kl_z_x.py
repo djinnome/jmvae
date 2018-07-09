@@ -5,6 +5,11 @@ import pickle
 import tempfile
 import shutil
 
+import sys
+import os
+
+Tarsdir = os.path.join(os.getcwd(), 'Tars')
+sys.path.append(Tarsdir)
 from Tars.model import MVAE
 from Tars.distribution import Bernoulli, Gaussian, GaussianConstantVar, Categorical
 from Tars.load_data import mnist, celeba, flickr
@@ -13,8 +18,7 @@ from lasagne.layers import InputLayer, DenseLayer, Conv2DLayer, batch_norm, Flat
 from lasagne.nonlinearities import sigmoid, tanh, softplus, rectify, elu, linear, softmax, leaky_rectify, identity
 from lasagne.updates import sgd, momentum, adagrad, adadelta, rmsprop, adam
 
-import sys
-import os
+
 
 import matplotlib
 matplotlib.use("Agg")
@@ -24,9 +28,9 @@ from sklearn.cross_validation import train_test_split
 from sklearn.utils import shuffle
 from progressbar import ProgressBar
 
-DATAPATH = os.getenv("HOME") + "/share/data/"
+DATAPATH = os.path.join(Tarsdir, 'datasets')
 
-from train_vae_z_x import bernoullisample
+#from train_vae_z_x import bernoullisample
 
 sys.setrecursionlimit(5000)
 
